@@ -33,13 +33,6 @@ var questions = [{
 	correctAnswer:3
 }]; 
 
-// window.onload = function() {
-//   $("#start").on("click", quizTimer);
-//   // $("#stop").on("click", stopwatch.stop);
-//   // $("#reset").on("click", stopwatch.reset);
-//   // $("#start").on("click", stopwatch.start);
-// };
-
 
 //Functions:
 //===============================================
@@ -82,8 +75,8 @@ function timeConverter(t) {
 
 
 function displayCurrentQuestion() {
-	$("#next").show();
-	$("#start").hide();
+	$("#next, #main").show();
+	$("#start, #image, #clip").hide();
 
 	var question = questions[currentQuestion].question;
     var questionClass = $(document).find("#questions");
@@ -139,31 +132,24 @@ $("#next").on("click", function () {
 
 });
 
-$("#restart").on("click", function () {
-	 time = 30;
-	 correctCounter =0;
-	 currentQuestion =  0;
-	 incorrectCounter =0;
-	 remainingQuestions =6;
-	 $("#results,#restart").hide()
-	 $("#quizMessage,#questions,#next,#timer,#choiceList, #clip").show();
-	quizTimer();
-    displayCurrentQuestion();
- });
 
 
 function endGame() {
 
 	 $("#quizMessage,#questions,#next,#timer,#choiceList").hide();
-	
-	$("#results").append("Game over. Time remaining:" + time + " Correct answers:" + correctCounter + " Incorrect anwers:" + incorrectCounter + " Remaining Questions: " + remainingQuestions);
+		
+	$("#timeRemaining").text("Time remaining: " + time);
+	$("#correctAnswer").text("Correct answers: " + correctCounter);
+	$("#incorrectAnswer").text("Incorrect answers: "  + incorrectCounter);
+	$("#remaining").text("Remaining Questions: " + remainingQuestions);
+
 	clearInterval(intervalId);
 	$("#restart, #results, #clip").show();
 }
 
 $(document).ready(function () {
 
-	$("#quizMessage, #next, #quizMessage, #restart, #clip" ).hide();
+	$("#quizMessage, #next, #quizMessage, #restart, #clip, #main" ).hide();
 	// $(document).find("#next").hide();
 	// $(document).find("#quizMessage").hide();
 	// $(document).find("#restart").hide();
@@ -175,6 +161,17 @@ $("#start").on("click", function () {
     displayCurrentQuestion();
  });
 
+$("#restart").on("click", function () {
+	 time = 30;
+	 correctCounter =0;
+	 currentQuestion =  0;
+	 incorrectCounter =0;
+	 remainingQuestions =6;
+	 $("#results,#restart, #quizMessage").hide()
+	 $("#quizMessage,#questions,#next,#timer,#choiceList, #clip").show();
+	quizTimer();
+    displayCurrentQuestion();
+ });
 
 
-    // $(this).find(".quizMessage").hide();
+    
