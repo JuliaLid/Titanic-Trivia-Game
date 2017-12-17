@@ -1,6 +1,6 @@
 //Declare global variables
 //=============================
-var time = 30;
+var time = 60;
 var correctCounter =0;
 var currentQuestion =  0;
 var incorrectCounter =0;
@@ -34,14 +34,14 @@ var questions = [{
 }]; 
 
 
-//Functions:
+//Supporting Functions:
 //===============================================
 
 //Timer functions
 
 function quizTimer(){
 
-	$("#timer").text("00:30");
+	$("#timer").text("01:00");
  	 intervalId = setInterval( function () 
 	  { time --;
 	  	var converted = timeConverter(time);
@@ -73,7 +73,7 @@ function timeConverter(t) {
 	  return minutes + ":" + seconds;
 }
 
-
+//Function to dynamically generate quiz questions
 function displayCurrentQuestion() {
 	$("#next, #main").show();
 	$("#start, #image, #clip").hide();
@@ -81,24 +81,22 @@ function displayCurrentQuestion() {
 	var question = questions[currentQuestion].question;
     var questionClass = $(document).find("#questions");
     var choiceList = $(document).find("#choiceList");
-    console.log(choiceList);
     var numChoices = questions[currentQuestion].choices.length;
     
     // Set the questionClass text to the current question
     $(questionClass).text(question);
 
-    // Remove all current <li> elements (if any)
+    // Remove all current <li> elements 
     $(choiceList).find("li").remove();
 
     var choice;
     for (i = 0; i < numChoices; i++) {
         choice = questions[currentQuestion].choices[i];
-        console.log(choice);
         $('<li><input type="radio" value=' + i + ' name="dynradio" />' + choice + '</li>').appendTo(choiceList);
     }
 }
 
-
+//Function to identify correct or incorrect answer
 $("#next").on("click", function () {
 
 	  value = $("input[type='radio']:checked").val();
@@ -106,6 +104,7 @@ $("#next").on("click", function () {
 	   if (value == undefined) {
 	   	    $(document).find("#quizMessage").text("Please select an answer");
             $(document).find("#quizMessage").show();
+            // $("#next").prop("disabled",true);
             // $("#next").hide();
              // $('#next').attr('disabled', true)
         } else {
@@ -132,7 +131,7 @@ $("#next").on("click", function () {
 
 });
 
-
+//Funciton to end the game 
 
 function endGame() {
 
@@ -147,19 +146,21 @@ function endGame() {
 	$("#restart, #results, #clip").show();
 }
 
+
+//Main game functions
+//===============================================
+
 $(document).ready(function () {
 
 	$("#quizMessage, #next, #quizMessage, #restart, #clip, #main" ).hide();
-	// $(document).find("#next").hide();
-	// $(document).find("#quizMessage").hide();
-	// $(document).find("#restart").hide();
-
 });
+
 
 $("#start").on("click", function () {
 	quizTimer();
     displayCurrentQuestion();
  });
+
 
 $("#restart").on("click", function () {
 	 time = 30;

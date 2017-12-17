@@ -9,21 +9,10 @@ body {
  }
 
 
-.addingPadding,#video {
-  text-align: center;
-}
-
-#main {
-background-color: black;
-color: #ecebbd;
-font-size: 25px;
-padding:40px;
-
-}
 /*styling for header*/
 #customNav{
     padding: 15px 0; 
-    background: -moz-radial-gradient(70% 70%, #ecebbd, #fff);
+      background: -moz-radial-gradient(70% 70%, #ecebbd, #fff);
     background: -webkit-radial-gradient(80% 80%, #ecebbd, #fff);
     background: -o-radial-gradient(80% 80%, #ecebbd, #fff); 
     background: -ms-radial-gradient(50% 50%, #ecebbd, #fff); 
@@ -43,9 +32,22 @@ padding:40px;
 }
 
 /*styling for main section*/
+
+.custom,#video {
+  text-align: center;
+}
+
+#main {
+background-color: black;
+color: #ecebbd;
+font-size: 25px;
+padding:40px;
+
+}
+
 h1 {
   font-family: 'Raleway', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   color: #ecebbd;
   margin-bottom: 20px;
   padding-bottom: 20px;
