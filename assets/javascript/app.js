@@ -47,7 +47,7 @@ function quizTimer(){
 	  	var converted = timeConverter(time);
 	  	 $("#timer").text(converted);
 	  	
-	  	 if (time===0){
+	  	if (time===0){
 	 	clearInterval(intervalId);
 	 	endGame();
 	 } 
@@ -163,7 +163,7 @@ $("#start").on("click", function () {
 
 
 $("#restart").on("click", function () {
-	 time = 30;
+	 time = 60;
 	 correctCounter =0;
 	 currentQuestion =  0;
 	 incorrectCounter =0;
